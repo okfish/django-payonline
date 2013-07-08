@@ -7,4 +7,5 @@ CONFIG = {
     'PAYONLINE_URL': 'https://secure.payonlinesystem.com/ru/payment/select/',
     'CURRENCY': 'RUB',
 }
+
 CONFIG.update(getattr(settings, 'PAYONLINE_CONFIG', {}))

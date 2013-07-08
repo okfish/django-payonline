@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import View
 
 from .settings import CONFIG
+from .forms import PaymentDataForm
 
 
 class PayView(View):

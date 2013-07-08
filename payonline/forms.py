@@ -1,8 +1,6 @@
-import pytz
 from hashlib import md5
 
 from django import forms
-from django.core.exceptions import ObjectDoesNotExist
 from django.utils.datastructures import SortedDict
 
 from .models import PaymentData
