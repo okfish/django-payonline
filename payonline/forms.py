@@ -15,7 +15,6 @@ class PaymentDataForm(forms.ModelForm):
         model = PaymentData
 
     def __init__(self, *args, **kwargs):
-        self.shop = kwargs.pop('shop')
         self.private_security_key = kwargs.pop('private_security_key')
         kwargs['data'] = DataProxy(kwargs['data'])
         super(PaymentDataForm, self).__init__(*args, **kwargs)
