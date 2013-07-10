@@ -64,7 +64,7 @@ class PayView(View):
                   'Currency': self.get_currency(),
                   'SecurityKey': self.get_security_key(),
                   'FailUrl': self.get_fail_url(),
-                  'ReturnUrl': self.get_callback_url()}
+                  'CallBackUrl': self.get_callback_url()}
         return params
 
     def get_redirect_url(self):
