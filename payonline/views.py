@@ -100,7 +100,8 @@ class CallbackView(View):
         return CONFIG['PRIVATE_SECURITY_KEY']
 
     def get_form(self, data):
-        return PaymentDataForm(data, self.get_private_security_key())
+        return PaymentDataForm(
+            data=data, private_security_key=self.get_private_security_key())
 
     def process_form(self, form):
         if form.is_valid():
