@@ -108,7 +108,7 @@ class CallbackView(View):
             payment_data = form.save()
             backends = get_success_backends()
             for backend in backends:
-                backend(payment_data)
+                backend(self.request, payment_data)
             return HttpResponseRedirect(reverse('payonline_success'))
         return HttpResponseBadRequest()
 
@@ -130,7 +130,7 @@ class FailView(View):
             return HttpResponseBadRequest()
         backends = get_fail_backends()
         for backend in backends:
-            backend(request.POST['ErrorCode'])
+            backend(request, request.POST['ErrorCode'])
         return render(request, 'payonline/fail.html', {
             'error_code': request.POST['ErrorCode'],
         })
