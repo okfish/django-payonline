@@ -27,6 +27,7 @@ class PaymentDataForm(forms.ModelForm):
         params['Amount'] = self.data.get('Amount', '')
         params['Currency'] = self.data.get('Currency', '')
         params['PrivateSecurityKey'] = self.private_security_key
+        params['DateTime'] = ' '.join(params['DateTime'].split('+'))
         return params
 
     def get_security_key(self):
@@ -35,8 +36,6 @@ class PaymentDataForm(forms.ModelForm):
         return key
 
     def clean(self):
-        print self.data.get('SecurityKey')
-        print self.get_security_key()
         if self.data.get('SecurityKey') != self.get_security_key():
             raise forms.ValidationError('Wrong security key')
         return self.cleaned_data
