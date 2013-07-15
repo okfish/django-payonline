@@ -126,8 +126,8 @@ class CallbackView(View):
 
 class FailView(View):
 
-    def post(self, request, *args, **kwargs):
-        if 'ErrorCode' not in request.POST:
+    def get(self, request, *args, **kwargs):
+        if 'ErrorCode' not in request.GET:
             return HttpResponseBadRequest()
         backends = get_fail_backends()
         for backend in backends:
