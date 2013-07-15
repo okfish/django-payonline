@@ -1,7 +1,8 @@
 from hashlib import md5
 
 from django.http import (HttpResponseBadRequest,
-                         HttpResponseRedirect)
+                         HttpResponseRedirect,
+                         HttpResponse)
 from django.shortcuts import render
 from django.utils.datastructures import SortedDict
 from django.utils.decorators import method_decorator
@@ -108,8 +109,8 @@ class CallbackView(View):
             payment_data = form.save()
             backends = get_success_backends()
             for backend in backends:
-                backend(self.request, payment_data)
-            return HttpResponseRedirect(reverse('payonline_success'))
+                backend(payment_data)
+            return HttpResponse()
         return HttpResponseBadRequest()
 
     @method_decorator(csrf_exempt)
