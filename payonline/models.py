@@ -36,6 +36,6 @@ class PaymentData(models.Model):
     wm_id = models.CharField(max_length=255, blank=True)
     wm_purse = models.CharField(max_length=255, blank=True)
 
-    ip_address = models.CharField(max_length=255)
-    ip_country = models.CharField(max_length=2)
+    ip_address = models.CharField(max_length=255, blank=True)
+    ip_country = models.CharField(max_length=2, blank=True)
     bin_country = models.CharField(max_length=2, blank=True)
