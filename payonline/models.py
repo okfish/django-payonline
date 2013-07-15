@@ -22,6 +22,7 @@ class PaymentData(models.Model):
     amount = models.DecimalField(max_digits=12, decimal_places=2)
     currency = models.CharField(max_length=3, choices=CURRENCIES)
     provider = models.CharField(max_length=10, choices=PROVIDERS)
+    order_id = models.CharField(max_length=50, blank=True)
 
     card_holder = models.CharField(max_length=255, blank=True)
     card_number = models.CharField(max_length=16, blank=True)
