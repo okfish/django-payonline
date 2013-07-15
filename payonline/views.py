@@ -14,6 +14,7 @@ from sitesutils.helpers import get_site
 
 from .settings import CONFIG
 from .forms import PaymentDataForm
+from .models import PaymentData
 from payonline.loader import get_success_backends, get_fail_backends
 
 
@@ -106,10 +107,13 @@ class CallbackView(View):
 
     def process_form(self, form):
         if form.is_valid():
-            payment_data = form.save()
-            backends = get_success_backends()
-            for backend in backends:
-                backend(payment_data)
+            transaction_id = form.cleaned_data.get('transaction_id')
+            if not PaymentData.objects.filter(
+                transaction_id=transaction_id).exists():
+                payment_data = form.save()
+                backends = get_success_backends()
+                for backend in backends:
+                    backend(payment_data)
             return HttpResponse()
         return HttpResponseBadRequest()
 
