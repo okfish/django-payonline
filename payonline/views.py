@@ -37,13 +37,13 @@ class PayView(View):
     def get_payonline_url(self):
         return CONFIG['PAYONLINE_URL']
 
-    def get_callback_url(self):
-        site = get_site(self.request)
-        return 'http://%s%s' % (site.domain, reverse('payonline_callback'))
-
     def get_fail_url(self):
         site = get_site(self.request)
         return 'http://%s%s' % (site.domain, reverse('payonline_fail'))
+
+    def get_return_url(self):
+        site = get_site(self.request)
+        return 'http://%s%s' % (site.domain, CONFIG['RETURN_URL'])
 
     def get_security_key_params(self):
         params = SortedDict()
@@ -65,7 +65,7 @@ class PayView(View):
                   'Currency': self.get_currency(),
                   'SecurityKey': self.get_security_key(),
                   'FailUrl': self.get_fail_url(),
-                  'CallBackUrl': self.get_callback_url()}
+                  'ReturnUrl': self.get_return_url()}
         return params
 
     def get_redirect_url(self):
