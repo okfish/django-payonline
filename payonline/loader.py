@@ -34,19 +34,18 @@ def import_by_path(dotted_path, error_prefix=''):
 
 
 def get_backends_dict(settings_attr):
-    backends = {}
+    backends = []
     for backend_path in getattr(settings, settings_attr, ()):
         backend = import_by_path(backend_path)
-        if hasattr(backend, 'identifier'):
-            backends[backend.identifier] = backend
+        backends.append(backend)
     return backends
 
 
 def get_success_backends():
-    backends_dict = get_backends_dict('PAYONLINE_SUCCESS_BACKENDS')
-    return backends_dict.values()
+    backends_list = get_backends_dict('PAYONLINE_SUCCESS_BACKENDS')
+    return backends_list
 
 
 def get_fail_backends():
-    backends_dict = get_backends_dict('PAYONLINE_FAIL_BACKENDS')
-    return backends_dict.values()
+    backends_list = get_backends_dict('PAYONLINE_FAIL_BACKENDS')
+    return backends_list
