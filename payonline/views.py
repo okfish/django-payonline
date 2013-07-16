@@ -130,14 +130,15 @@ class CallbackView(View):
 
 class FailView(View):
 
-    def get(self, request, *args, **kwargs):
-        if 'ErrorCode' not in request.GET:
+    @method_decorator(csrf_exempt)
+    def post(self, request, *args, **kwargs):
+        if 'ErrorCode' not in request.POST:
             return HttpResponseBadRequest()
         backends = get_fail_backends()
         for backend in backends:
-            backend(request, request.GET['ErrorCode'])
+            backend(request, request.POST['ErrorCode'])
         return render(request, 'payonline/fail.html', {
-            'error_code': request.GET['ErrorCode'],
+            'error_code': request.POST['ErrorCode'],
         })
 
 
