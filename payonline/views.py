@@ -135,9 +135,9 @@ class FailView(View):
             return HttpResponseBadRequest()
         backends = get_fail_backends()
         for backend in backends:
-            backend(request, request.POST['ErrorCode'])
+            backend(request, request.GET['ErrorCode'])
         return render(request, 'payonline/fail.html', {
-            'error_code': request.POST['ErrorCode'],
+            'error_code': request.GET['ErrorCode'],
         })
 
 
