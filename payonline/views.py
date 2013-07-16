@@ -131,6 +131,9 @@ class CallbackView(View):
 class FailView(View):
 
     @method_decorator(csrf_exempt)
+    def dispatch(self, *args, **kwargs):
+        return super(FailView, self).dispatch(*args, **kwargs)
+
     def post(self, request, *args, **kwargs):
         if 'ErrorCode' not in request.POST:
             return HttpResponseBadRequest()
