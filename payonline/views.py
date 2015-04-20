@@ -129,7 +129,8 @@ class CallbackView(View):
 
 
 class FailView(View):
-
+    template_name = 'payonline/fail.html'
+    
     @method_decorator(csrf_exempt)
     def dispatch(self, *args, **kwargs):
         return super(FailView, self).dispatch(*args, **kwargs)
@@ -140,16 +141,16 @@ class FailView(View):
         backends = get_fail_backends()
         for backend in backends:
             backend(request, request.POST['ErrorCode'])
-        return render(request, 'payonline/fail.html', {
+        return render(request, self.template_name, {
             'error_code': request.POST['ErrorCode'],
         })
 
 
 class SuccessView(View):
-
+    template_name = 'payonline/success.html'
     def get_context_data(self, **kwargs):
         return kwargs
 
     def get(self, request, *args, **kwargs):
         context_data = self.get_context_data()
-        return render(request, 'payonline/success.html', context_data)
+        return render(request, self.template_name, context_data)
