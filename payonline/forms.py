@@ -13,6 +13,7 @@ class PaymentDataForm(forms.ModelForm):
 
     class Meta:
         model = PaymentData
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         self.private_security_key = kwargs.pop('private_security_key', '')
