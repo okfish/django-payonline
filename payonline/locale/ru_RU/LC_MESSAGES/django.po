@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.1\n"
-"Report-Msgid-Bugs-To: okfish@yandex.ru\n"
-"POT-Creation-Date: 2016-06-22 17:33+0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-06-22 20:16+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Oleg Rybkin aka Fish <okfish@yandex.ru>\n"
 "Language-Team: Teleme.ru\n"
@@ -21,26 +21,26 @@ msgstr ""
 msgid "PayOnline"
 msgstr "ПэйОнлайн"
 
-#: models.py:7
+#: models.py:10
 msgid "RUB"
 msgstr "Руб."
 
-#: models.py:8
+#: models.py:11
 msgid "USD"
 msgstr "Долл. США"
 
-#: models.py:9
+#: models.py:12
 msgid "EUR"
 msgstr "Евро"
 
-#: models.py:13
+#: models.py:15
 msgid "Card"
 msgstr "Банковская карта"
 
-#: models.py:14
+#: models.py:16
 msgid "Qiwi"
 msgstr "кошелек Qiwi"
 
-#: models.py:15
+#: models.py:17
 msgid "WebMoney"
 msgstr "кошелек WebMoney"
