@@ -6,4 +6,3 @@ class PayonlineConfig(AppConfig):
     label = 'payonline'
     name = 'payonline'
     verbose_name = _('PayOnline')
-
