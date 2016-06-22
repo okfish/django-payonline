@@ -1,0 +1,46 @@
+# Russian locale for django-payonline.
+# Copyright (C) 2016
+# This file is distributed under the same license as the django-payonline package.
+# Oleg Rybkin aka Fish <okfish@yandex.ru>, 2016.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.1\n"
+"Report-Msgid-Bugs-To: okfish@yandex.ru\n"
+"POT-Creation-Date: 2016-06-22 17:33+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Oleg Rybkin aka Fish <okfish@yandex.ru>\n"
+"Language-Team: Teleme.ru\n"
+"Language: Russian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: config.py:8
+msgid "PayOnline"
+msgstr "ПэйОнлайн"
+
+#: models.py:7
+msgid "RUB"
+msgstr "Руб."
+
+#: models.py:8
+msgid "USD"
+msgstr "Долл. США"
+
+#: models.py:9
+msgid "EUR"
+msgstr "Евро"
+
+#: models.py:13
+msgid "Card"
+msgstr "Банковская карта"
+
+#: models.py:14
+msgid "Qiwi"
+msgstr "кошелек Qiwi"
+
+#: models.py:15
+msgid "WebMoney"
+msgstr "кошелек WebMoney"
