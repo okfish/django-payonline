@@ -1,3 +1,6 @@
+from django.utils.translation import ugettext_lazy as _
+
+
 class DataProxy(object):
 
     aliases = {
@@ -35,3 +38,18 @@ class DataProxy(object):
         if name in self.aliases:
             name = self.aliases[name]
         return self.data.get(name, default)
+
+
+class APIErrors(object):
+
+    messages = {
+        '1': _('PayOnline has a technical problems. Please, try again later.'),
+        '2': _('Payment cannot be processed for this bank card. Choose another card or payment method.'),
+        '3': _('Payment declined by bank. Call your bank to know a reason and try again.'),
+    }
+
+    def get(self, code):
+        msg = _('Undefined error code')
+        if code in self.messages.keys():
+            msg = self.messages[code]
+        return msg
