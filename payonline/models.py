@@ -3,20 +3,19 @@ from django.utils.translation import ugettext_lazy as _
 
 from .fields.models import UTCDateTimeField
 
-CURRENCIES = (
-    ('RUB', _('RUB')),
-    ('USD', _('USD')),
-    ('EUR', _('EUR')),
-)
-
-PROVIDERS = (
-    ('Card', _('Card')),
-    ('Qiwi', _('Qiwi')),
-    ('WebMoney', _('WebMoney')),
-)
-
 
 class PaymentData(models.Model):
+
+    CURRENCIES = (
+        ('RUB', _('RUB')),
+        ('USD', _('USD')),
+        ('EUR', _('EUR')),
+    )
+    PROVIDERS = (
+        ('Card', _('Card')),
+        ('Qiwi', _('Qiwi')),
+        ('WebMoney', _('WebMoney')),
+    )
 
     datetime = UTCDateTimeField()
     transaction_id = models.PositiveIntegerField()
@@ -40,3 +39,13 @@ class PaymentData(models.Model):
     ip_address = models.CharField(max_length=255, blank=True)
     ip_country = models.CharField(max_length=2, blank=True)
     bin_country = models.CharField(max_length=2, blank=True)
+
+    @property
+    def provider_name(self):
+        name = None
+        if self.provider:
+            try:
+                name = dict(self.PROVIDERS)[self.provider]
+            except KeyError:
+                name = self.provider
+        return name
