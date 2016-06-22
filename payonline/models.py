@@ -1,17 +1,18 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
 from .fields.models import UTCDateTimeField
 
-
 CURRENCIES = (
-    ('RUB', 'RUB'),
-    ('USD', 'USD'),
-    ('EUR', 'EUR'),
+    ('RUB', _('RUB')),
+    ('USD', _('USD')),
+    ('EUR', _('EUR')),
 )
 
 PROVIDERS = (
-    ('Card', 'Card'),
-    ('Qiwi', 'Qiwi'),
-    ('WebMoney', 'WebMoney'),
+    ('Card', _('Card')),
+    ('Qiwi', _('Qiwi')),
+    ('WebMoney', _('WebMoney')),
 )
 
 
