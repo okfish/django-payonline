@@ -5,7 +5,7 @@ import sys
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.utils import six
-from django.utils.importlib import import_module
+from importlib import import_module
 
 
 def import_by_path(dotted_path, error_prefix=''):
