@@ -1,27 +1,28 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
 from .fields.models import UTCDateTimeField
 
 
-CURRENCIES = (
-    ('RUB', 'RUB'),
-    ('USD', 'USD'),
-    ('EUR', 'EUR'),
-)
-
-PROVIDERS = (
-    ('Card', 'Card'),
-    ('Qiwi', 'Qiwi'),
-    ('WebMoney', 'WebMoney'),
-)
-
-
 class PaymentData(models.Model):
+
+    CURRENCIES = (
+        ('RUB', _('RUB')),
+        ('USD', _('USD')),
+        ('EUR', _('EUR')),
+    )
+    PROVIDERS = (
+        ('Card', _('Card')),
+        ('Qiwi', _('Qiwi')),
+        ('WebMoney', _('WebMoney')),
+    )
 
     datetime = UTCDateTimeField()
     transaction_id = models.PositiveIntegerField()
     amount = models.DecimalField(max_digits=12, decimal_places=2)
     currency = models.CharField(max_length=3, choices=CURRENCIES)
     provider = models.CharField(max_length=10, choices=PROVIDERS)
+    order_id = models.CharField(max_length=50, blank=True)
 
     card_holder = models.CharField(max_length=255, blank=True)
     card_number = models.CharField(max_length=16, blank=True)
@@ -35,6 +36,16 @@ class PaymentData(models.Model):
     wm_id = models.CharField(max_length=255, blank=True)
     wm_purse = models.CharField(max_length=255, blank=True)
 
-    ip_address = models.CharField(max_length=255)
-    ip_country = models.CharField(max_length=2)
+    ip_address = models.CharField(max_length=255, blank=True)
+    ip_country = models.CharField(max_length=2, blank=True)
     bin_country = models.CharField(max_length=2, blank=True)
+
+    @property
+    def provider_name(self):
+        name = None
+        if self.provider:
+            try:
+                name = dict(self.PROVIDERS)[self.provider]
+            except KeyError:
+                name = self.provider
+        return name

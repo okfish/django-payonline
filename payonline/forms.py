@@ -1,8 +1,6 @@
-import pytz
 from hashlib import md5
 
 from django import forms
-from django.core.exceptions import ObjectDoesNotExist
 from django.utils.datastructures import SortedDict
 
 from .models import PaymentData
@@ -15,10 +13,10 @@ class PaymentDataForm(forms.ModelForm):
 
     class Meta:
         model = PaymentData
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
-        self.shop = kwargs.pop('shop')
-        self.private_security_key = kwargs.pop('private_security_key')
+        self.private_security_key = kwargs.pop('private_security_key', '')
         kwargs['data'] = DataProxy(kwargs['data'])
         super(PaymentDataForm, self).__init__(*args, **kwargs)
 
@@ -30,6 +28,7 @@ class PaymentDataForm(forms.ModelForm):
         params['Amount'] = self.data.get('Amount', '')
         params['Currency'] = self.data.get('Currency', '')
         params['PrivateSecurityKey'] = self.private_security_key
+        params['DateTime'] = ' '.join(params['DateTime'].split('+'))
         return params
 
     def get_security_key(self):

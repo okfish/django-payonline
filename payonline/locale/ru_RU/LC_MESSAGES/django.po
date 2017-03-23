@@ -1,0 +1,66 @@
+# Russian locale for django-payonline.
+# Copyright (C) 2016
+# This file is distributed under the same license as the django-payonline package.
+# Oleg Rybkin aka Fish <okfish@yandex.ru>, 2016.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-06-22 23:32+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Oleg Rybkin aka Fish <okfish@yandex.ru>\n"
+"Language-Team: Teleme.ru\n"
+"Language: Russian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: config.py:8
+msgid "PayOnline"
+msgstr "ПэйОнлайн"
+
+#: helpers.py:46
+msgid "PayOnline has a technical problems. Please, try again later."
+msgstr "Технические проблемы. Пожалуйста, попробуйте еще раз позже."
+
+#: helpers.py:47
+msgid ""
+"Payment cannot be processed for this bank card. Choose another card or "
+"payment method."
+msgstr "Невозможно совершить платеж по этой карте. Используйте другую или "
+"выберите другой способ оплаты."
+
+#: helpers.py:48
+msgid ""
+"Payment declined by bank. Call your bank to know a reason and try again."
+msgstr "Платеж отклонен банком-эмитентом карты. Позвоните в банк для выяснения причины и попробуйте еще раз."
+
+#: helpers.py:52
+msgid "Undefined error code"
+msgstr "Неопределенный код ошибки"
+
+#: models.py:10
+msgid "RUB"
+msgstr "Руб."
+
+#: models.py:11
+msgid "USD"
+msgstr "Долл. США"
+
+#: models.py:12
+msgid "EUR"
+msgstr "Евро"
+
+#: models.py:15
+msgid "Card"
+msgstr "Банковская карта"
+
+#: models.py:16
+msgid "Qiwi"
+msgstr "кошелек Qiwi"
+
+#: models.py:17
+msgid "WebMoney"
+msgstr "кошелек WebMoney"
